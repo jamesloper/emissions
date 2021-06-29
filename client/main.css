@@ -1,0 +1,80 @@
+@keyframes spin {0% {transform: rotate(0deg)} 100% {transform:rotate(360deg)}}
+@keyframes fade {0% {opacity:0;} 100% {opacity:1;}}
+@keyframes modal {0% {transform:scale(0); opacity:0;} 100% {transform:scale(1); opacity:1;}}
+* {box-sizing:border-box;}
+html,body {padding:0; margin:0; font-family:Menlo, monospace; background:#000; color:#fff; height:100%; font-size:12px;}
+a {text-decoration:none;}
+h1,h2,h3 {margin:0; font-weight:normal;}
+i {cursor:default;}
+dialog {height:100%; display:flex; align-items:center; justify-content:space-between; background:transparent; border:none;}
+dialog::backdrop {background:rgba(0,0,0,.6);  animation:fade .2s;}
+.modal-container {width:300px; background:#111; animation:modal .2s; border:2px solid #4C6; color:#fff; text-align:center;}
+.modal-container:empty {display:none;}
+.window-title {padding:0 10px; height:30px; background:#4C6; color:#000; font-style:italic; display:flex; align-items:center; justify-content:center; margin-top:-2px;}
+.window-body {padding:10px;}
+.window-bottom {padding:10px;}
+
+.page-container {display:flex; flex-direction:column; height:100%;}
+.placeholder {padding:20px 0; display:flex; flex:1; height:100%; font-style:italic; align-items:center; justify-content:center; color:#666;}
+
+.table {width:100%; border-spacing:0; border:1px solid #222;}
+.table th {background:#222; text-align:left;}
+.table th, .table td {padding:8px 10px;}
+
+.card-grid {display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;}
+
+.input-col > * {margin-bottom:10px;}
+.input-col > *:last-child {margin-bottom:0;}
+.form-group {margin-bottom:40px;}
+.form-group-top {display:flex; align-items:center; margin-bottom:10px; height:30px; background:#222;}
+.form-group-top h2 {flex:1; font-size:13px; padding-left:10px;}
+.form-group-top .btn {width:auto;}
+
+.card {border:2px solid #222;}
+.card-title {padding:0 10px; height:24px; background:#222; display:flex; align-items:center; justify-content:space-between; margin-top:-1px;}
+.card-title i {font-size:16px;}
+.card-body {padding:10px;}
+.card-body img {max-width:100%; display:block;}
+.card-help {opacity:.6; margin-bottom:10px;}
+
+input,button,select {padding:0 10px; height:30px; line-height:30px; outline:none; display:block; width:100%; font-family:inherit;}
+select {background:#222; border:1px solid #333; color:#fff;}
+.text {background:transparent; color:#fff; border:1px solid #4C6; display:block; box-shadow:inset 0 30px 0 #000;}
+.text:-webkit-autofill {-webkit-text-fill-color:#fff !important;}
+.btn {background:#4C6; border:none; color:#000; display:flex; align-items:center; justify-content:center;}
+.btn.secondary {background:#111; border:1px solid #333; color:#fff;}
+
+.toast-container {position:fixed; bottom:20%; left:0; right:0; pointer-events:none; text-align:center;}
+.toast {display:inline-block; padding:5px 10px; background:#44CC66; color:#fff;}
+
+h1 {display:inline-flex; padding:10px; width:180px; flex-direction:column; align-items:center; color:#ccc; font-size:12px;}
+#react-target {height:100%; color:#eee; display:flex; flex-direction:column;}
+
+.spinner {border-radius:50%; width:24px; height:24px; border:2px solid #000; border-left:2px solid #fff; animation:spin 2s infinite linear;}
+
+.nav {display:flex; justify-content:space-between; align-items:center; padding-right:10px;}
+.avatar-name {background:#111; height:30px; color:#666; display:flex; align-items:center; padding:0 10px; border-radius:15px; font-size:10px;}
+.body {display:flex; flex:1;}
+.sidebar {min-width:180px; max-width:180px; padding-top:10px;}
+.sidebar-group {margin-bottom:20px;}
+.sidebar-header {font-size:10px; padding:5px 10px; opacity:.6; text-transform:uppercase;}
+.sidebar a {display:flex; color:#fff; padding:6px 10px; align-items:center;}
+.sidebar i {margin-right:9px;}
+.sidebar a.active {background:#fff; color:#000;}
+.main {flex:1; padding:10px;}
+
+.camera-view {height:190px;}
+
+.landing-page {display:flex; flex:1; align-items:center; justify-content:center; flex-direction:column;}
+
+.dashboard-graphs {display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+
+.smart-account-picker {display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+
+ /* Settings page */
+.integrations-page > * {flex:1;}
+.smart-account {border:1px solid #333; height:60px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.smart-account img {width:60px;}
+.smart-account-logo {display:flex; align-items:center; justify-content:space-between;}
+.smart-account-device {display:flex; align-items:center; margin-bottom:5px;}
+.smart-account-device i {margin-right:10px; font-size:14px;}

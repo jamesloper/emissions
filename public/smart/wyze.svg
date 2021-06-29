@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.6 17.4">
+    <defs>
+        <style>.a{fill:#fff;fill-rule:evenodd}</style>
+    </defs>
+    <path class="a"
+          d="M22.5 0l-6.7 14.4-2.5-5.5-1-2.2L9.2 0H7.1l4.1 8.9-2.5 5.5L2.1 0H0l7.7 16.6.4.8h1.4l.4-.8 2.5-5.5 2.5 5.5.4.8h1.4l.4-.8L24.6 0zM37.8 0l-5.1 9-5.1-9h-2.2l6.3 11.2v6.2h1.9v-6.2L40 0zM56.7 9.4h14.9V7.6H56.7z"/>
+    <path class="a"
+          d="M56.7 9.4h14.9V7.6H56.7zM41.1 0v1.9H52L40.4 17.4h14.7v-1.9H44.2L55.8 0zM56.7 1.8h14.9V0H56.7zM56.7 17.4h14.9v-1.8H56.7z"/>
+</svg>
