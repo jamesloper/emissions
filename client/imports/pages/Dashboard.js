@@ -1,14 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
 	FlexibleWidthXYPlot,
-	HorizontalGridLines, LineMarkSeries,
-	LineSeries,
-	MarkSeries,
-	VerticalBarSeries,
-	VerticalGridLines, XAxis, YAxis,
+	HorizontalGridLines, LineMarkSeries, VerticalGridLines, XAxis, YAxis,
 } from 'react-vis';
 import { DateTime } from 'luxon';
 import { Card } from '../core/Card';
+import OpenCloseChart from '../charts/OpenClose';
 
 const formatDate = (date) => {
 	return DateTime.fromJSDate(date).toLocaleString();
@@ -44,6 +41,9 @@ export const Dashboard = () => {
 							color="white"
 						/>
 					</FlexibleWidthXYPlot>
+				</Card>
+				<Card title="Open Times">
+					<OpenCloseChart/>
 				</Card>
 				{/*<div className="graph-container">*/}
 				{/*	<div className="station-name">Revenue</div>*/}
