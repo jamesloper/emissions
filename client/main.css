@@ -13,6 +13,8 @@ dialog::backdrop {background:rgba(0,0,0,.6);  animation:fade .2s;}
 .window-title {padding:0 10px; height:30px; background:#4C6; color:#000; font-style:italic; display:flex; align-items:center; justify-content:center; margin-top:-2px;}
 .window-body {padding:10px;}
 .window-bottom {padding:10px;}
+.window-bottom .btn {margin-bottom:10px;}
+.window-bottom .btn:last-child {margin-bottom:0;}
 
 .page-container {display:flex; flex-direction:column; height:100%;}
 .placeholder {padding:20px 0; display:flex; flex:1; height:100%; font-style:italic; align-items:center; justify-content:center; color:#666;}

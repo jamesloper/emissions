@@ -1,7 +1,8 @@
 import cp from 'child_process';
-import { _ } from 'meteor/underscore';
+import { SmartDevices } from '../../../imports/db';
+import http from 'http';
 
-export const proxyRtsp = (req, res) => {
+const proxyRtsp = (device, req, res) => {
 	const url = 'rtsp://freja.hiof.no:1935/rtplive/definst/hessdalen03.stream';
 	let active = true;
 	let jpg = Buffer.from('');
@@ -49,3 +50,23 @@ export const proxyRtsp = (req, res) => {
 		ffmpeg.kill();
 	});
 };
+
+const plainProxy = (device, req, res) => {
+	const video = http.get(device.streamUrl, (target) => {
+		res.writeHead(target.statusCode, target.headers);
+		target.pipe(res);
+	});
+
+	req.on('close', () => {
+		video.destroy();
+	});
+};
+
+export const proxyVideo = Meteor.bindEnvironment((req, res) => {
+	const device = SmartDevices.findOne(req.params.id);
+	if (device.streamUrl.startsWith('http')) {
+		plainProxy(device, req, res);
+	} else {
+		proxyRtsp(device, req, res);
+	}
+});

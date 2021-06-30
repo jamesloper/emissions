@@ -15,10 +15,22 @@ export const EditSmartDeviceModal = ({device}) => {
 		'onSuccess': closeModal,
 	});
 
+	const pressDelete = (e) => callMethod('DeleteDevice', {
+		'event': e,
+		'data': device._id,
+		'onLoading': setLoading,
+		'onSuccess': closeModal,
+	});
+
 	return (
 		<Window
 			title="Edit Video Device"
-			bottomComponent={<Button title="Submit" disabled={loading}/>}
+			bottomComponent={
+				<div className="btn-column">
+					<Button title="Submit" disabled={loading}/>
+					<Button title="Delete" disabled={loading} onClick={pressDelete}/>
+				</div>
+			}
 			onSubmit={submit}
 		>
 			<div className="input-col">

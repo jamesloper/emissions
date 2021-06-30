@@ -1,10 +1,10 @@
-import connect from 'connect';
+import express from 'express';
 import { restTwilio } from '../imports/rest/rest-twilio';
-import { proxyRtsp } from '../imports/rest/proxy-rtsp';
+import { proxyVideo } from '../imports/rest/proxy-video';
 
-const app = connect();
+const app = express();
 app.use('/twilio', restTwilio);
-app.use('/rtsp', proxyRtsp);
-app.use('/', (req, res) => res.end('ok'));
+app.use('/video/:id', proxyVideo);
+app.use('/', (req, res) => res.end('404'));
 
 WebApp.connectHandlers.use('/api', app);

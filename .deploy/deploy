@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function log() {
+  echo "\033[0;35m\033[1m$1\033[0m$2"
+  tput sgr0
+}
+
+# Check for the right files inside the deployment folder
+[ ! -f "$1/settings.json" ] && log "Could not locate settings.json" && exit 1
+[ ! -f "$1/env.sh" ] && log "Could not locate env.sh" && exit 1
+
+cd ../
+PROJECT=$(basename $PWD)
+SERVER="ubuntu@157.245.217.63"
+
+# check cached build directory
+log "Building meteor app"
+useCache="n"
+[ -d "/tmp/$1" ] && read -p "Use cached build? [y/n]: " useCache
+if [ $useCache != "y" ]; then
+  meteor build /tmp/$1 --architecture os.linux.x86_64
+fi
+
+log "Uploading app & settings"
+scp -pr /tmp/$1 $SERVER:./
+scp -pr .deploy/$1/* $SERVER:./$1
+
+log "Executing remote script"
+ssh $SERVER "APP=$1 PROJECT=$PROJECT bash -s" < .deploy/remote-script.sh

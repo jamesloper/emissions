@@ -2,17 +2,21 @@ import { SmartAccounts, SmartDevices } from '../../imports/db';
 import { ChamberlainAccount } from '../imports/myq';
 
 Meteor.methods({
-	'AddCaptureDevice': function({url, type}) {
+	'AddCaptureDevice': function({url, type, title}) {
 		if (!this.userId) throw new Meteor.Error('login', 'You have to be logged in to add a capture device');
 
 		SmartDevices.insert({
+			'title': title,
 			'type': type,
 			'streamUrl': url,
 			'userId': this.userId,
 		});
 	},
-	'EditDevice': function({deviceId, title}) {
-		SmartDevices.update(deviceId, {$set: {title}});
+	'EditDevice': function({deviceId, title, streamUrl}) {
+		SmartDevices.update(deviceId, {$set: {title, streamUrl}});
+	},
+	'DeleteDevice': function(deviceId) {
+		SmartDevices.remove({'_id': deviceId});
 	},
 	'AddMyQAccount': function({username, password}) {
 		const account = SmartAccounts.findOne({'auth.username': username, 'type': 'myq'});

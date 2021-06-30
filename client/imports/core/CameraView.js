@@ -3,7 +3,7 @@ import { Icon } from './Icon';
 import { useFullScreen } from '../util/fullscreen';
 import { Card } from './Card';
 
-export const CameraView = ({title, url}) => {
+export const CameraView = ({title, device}) => {
 	const [error, setError] = useState(null);
 	const el = useRef();
 	const {fullScreen, toggle} = useFullScreen(el);
@@ -16,7 +16,7 @@ export const CameraView = ({title, url}) => {
 			{error ? (
 				<div className="placeholder">OFFLINE</div>
 			) : (
-				<img src={url} className="camera-view" ref={el} onError={setError}/>
+				<img src={`/api/video/${device._id}`} className="camera-view" ref={el} onError={setError}/>
 			)}
 		</Card>
 	);

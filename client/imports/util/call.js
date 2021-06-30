@@ -3,8 +3,12 @@ import { showModal } from '../core/Modal';
 import { ConfirmModal } from '../modals/ConfirmModal';
 
 export const callMethod = (methodName, opts = {}) => {
+	if (opts.event) {
+		opts.event.preventDefault();
+		opts.event.stopPropagation();
+	}
 	if (opts.confirm) {
-		showModal(<ConfirmModal message={opts.confirm} method={methodName} data={opts.data}/>)
+		showModal(<ConfirmModal message={opts.confirm} method={methodName} data={opts.data}/>);
 		return;
 	}
 	if (opts.onLoading) opts.onLoading(true);
@@ -12,5 +16,5 @@ export const callMethod = (methodName, opts = {}) => {
 		if (opts.onLoading) opts.onLoading(false);
 		if (err) return console.warn(err);
 		if (opts.onSuccess) opts.onSuccess(res);
-	})
+	});
 };

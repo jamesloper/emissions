@@ -15,7 +15,7 @@ export const DesktopsPage = () => {
 	if (!ready) return <Spinner/>;
 
 	const renderDevice = (device) => {
-		return <CameraView key={device._id} title={device.title || device.streamUrl} url={device.streamUrl}/>;
+		return <CameraView key={device._id} title={device.title} device={device}/>;
 	};
 
 	return (

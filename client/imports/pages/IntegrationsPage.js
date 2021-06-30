@@ -62,7 +62,7 @@ export const IntegrationsPage = () => {
 				RightComponent={<Icon name="edit" onClick={() => showModal(<EditSmartDeviceModal device={device}/>)}/>}
 			>
 				<div>Type: {device.type}</div>
-				<div>Url: <a target="_blank" href={device.streamUrl}>{device.streamUrl}</a></div>
+				<div>Url: {device.streamUrl}</div>
 			</Card>
 		);
 	};

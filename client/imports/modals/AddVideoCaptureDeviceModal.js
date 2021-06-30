@@ -4,15 +4,16 @@ import { TextInput, Select, Button } from '../core/Input';
 import { callMethod } from '../util/call';
 import { closeModal } from '../core/Modal';
 
-const typeOptions = {desktop: 'MJPEG Desktop', camera: 'MJPEG IP Camera'};
+const typeOptions = {camera: 'Video Camera', desktop: 'Desktop'};
 
 export const AddVideoCaptureDeviceModal = () => {
+	const [title, setTitle] = useState('');
 	const [url, setUrl] = useState('');
-	const [type, setType] = useState('desktop');
+	const [type, setType] = useState('camera');
 	const [loading, setLoading] = useState('');
 
 	const submit = () => callMethod('AddCaptureDevice', {
-		'data': {url, type},
+		'data': {url, type, title},
 		'onLoading': setLoading,
 		'onSuccess': closeModal,
 	});
@@ -24,6 +25,7 @@ export const AddVideoCaptureDeviceModal = () => {
 			onSubmit={submit}
 		>
 			<div className="input-col">
+				<TextInput placeholder="Name" value={title} onChange={setTitle}/>
 				<TextInput placeholder="Stream URL" value={url} onChange={setUrl}/>
 				<Select options={typeOptions} value={type} onChangeValue={setType}/>
 			</div>
